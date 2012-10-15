@@ -10,7 +10,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  *
- * $Id$
+ * $Id: common.php 12242 2012-01-27 23:41:13Z c_schmitz $
  */
 
 //Security Checked: POST, GET, SESSION, DB, REQUEST, returnglobal
@@ -21,8 +21,6 @@ if (!isset($dbprefix) || isset($_REQUEST['dbprefix'])) {safe_die("Cannot run thi
 // Include version information
 require($rootdir.'/version.php');
 require($rootdir."/common_functions.php");
-// Include dTexts
-require_once(dirname(__FILE__).'/classes/dTexts/dTexts.php');
 
 // Check for most necessary requirements
 // Now check for PHP & db version
@@ -252,7 +250,7 @@ $updatekeyvaliduntil='';
 require ($homedir.'/globalsettings.php');
 SSL_mode();// This really should be at the top but for it to utilise getGlobalSetting() it has to be here
 
-$showXquestions = getGlobalSetting('showXquestions');
+$showxquestions = getGlobalSetting('showxquestions');
 $showgroupinfo = getGlobalSetting('showgroupinfo');
 $showqnumcode = getGlobalSetting('showqnumcode');
 
@@ -265,7 +263,7 @@ if ($sourcefrom == "admin")
 If (!$dbexistsbutempty && $sourcefrom=='admin')
 {
     $usrow = getGlobalSetting('DBVersion');
-    if (intval($usrow)<$dbversionnumber)
+    if (floatval($usrow)<$dbversionnumber)
     {
         $action='';
         require_once($rootdir.'/classes/core/language.php');

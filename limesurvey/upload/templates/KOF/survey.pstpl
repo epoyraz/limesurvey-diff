@@ -1,0 +1,46 @@
+<div id="header" STYLE="background-image: url({TEMPLATEURL}head_bg.jpg)">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="header">
+				<tbody><tr>
+					<td height="50" style="padding-left:10px;">
+						<img style="padding-right:20px;" src="{TEMPLATEURL}/kof_logo.gif">
+						<img src="{TEMPLATEURL}/eth_logo.gif">
+						<span class="header1">
+						<br/><br/>
+							Investitionsumfrage<br/> 
+							<br>
+							Enquête sur les investissements<br/>
+							<br>
+							Inchiesta investimenti<br/>
+						</span>
+					</td>
+					
+					<td>
+						<left>
+						<font size="1">
+						KOF Konjunkturforschungsstelle<br>ETH Zürich, WEC D15 <br>Weinbergstrasse 11, 8092 Zürich<br>www.kof.ethz.ch<br>Tel. 044 632 85 33<br>Fax 044 632 1352<br>ivu@kof.ethz.ch
+						</font>
+						</left>
+					</td>
+					
+				</tr>
+			</tbody></table>
+		</div>
+<table class="survey-header-table">
+	<tr>
+		<td class="survey-description">
+			<span class="header2">  </span>
+			<br />
+			<p><table width="100%" cellspacing="0" cellpadding="5" border="0" style="margin-top:15px;" id="beachten">
+			<tbody>
+		</tbody></table>
+		</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="graph">
+			{PERCENTCOMPLETE}
+		</td>
+	</tr>
+	<tr>
+  </tr>
+</table>

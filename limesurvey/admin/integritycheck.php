@@ -10,7 +10,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  *
- * $Id$
+ * $Id: integritycheck.php 11664 2011-12-16 05:19:42Z tmswhite $
  */
 
 
@@ -44,7 +44,7 @@ if($_SESSION['USER_RIGHT_CONFIGURATOR'] == 1)
         while ($aRow=$aResult->FetchRow())
         {
            $tablename=substr($aRow[0],strlen($dbprefix));
-           if ($tablename=='survey_permissions') continue;
+           if ($tablename=='survey_permissions' || $tablename=='survey_links') continue;
            $iSurveyID=substr($tablename,strpos($tablename,'_')+1);
            $qquery="SELECT sid FROM {$dbprefix}surveys WHERE sid='{$iSurveyID}'";
            $qresult=$connect->Execute($qquery) or safe_die ("Couldn't check questions table for qids<br />$qquery<br />".$connect->ErrorMsg());

@@ -10,7 +10,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  *
- * $Id$
+ * $Id: importquestion.php 11664 2011-12-16 05:19:42Z tmswhite $
  */
 
 //Ensure script is not run directly, avoid path disclosure
@@ -682,6 +682,8 @@ function CSVImportQuestion($sFullFilepath, $newsid, $newgid)
         }
 
     }
+    LimeExpressionManager::SetDirtyFlag(); // so refreshes syntax highlighting
+
     $results['newqid']=$newqid;
     $results['questions']=1;
     $results['newqid']=$newqid;
@@ -708,7 +710,7 @@ function XMLImportQuestion($sFullFilepath, $newsid, $newgid)
 
     $xml = simplexml_load_file($sFullFilepath);
     if ($xml->LimeSurveyDocType!='Question') safe_die('This is not a valid LimeSurvey question structure XML file.');
-    $dbversion = (int) $xml->DBVersion;
+    $dbversion = (float) $xml->DBVersion;
     $aQIDReplacements=array();
     $aSQIDReplacements=array(0=>0);
     $results['defaultvalues']=0;
@@ -842,7 +844,7 @@ function XMLImportQuestion($sFullFilepath, $newsid, $newgid)
             $query=$connect->GetInsertSQL($tablename,$insertdata);
             $result=$connect->Execute($query) or safe_die ($clang->gT("Error").": Failed to insert data<br />{$query}<br />\n".$connect->ErrorMsg());
             $results['answers']++;
-        }
+    }
     }
 
 
@@ -865,7 +867,7 @@ function XMLImportQuestion($sFullFilepath, $newsid, $newgid)
             $query=$connect->GetInsertSQL($tablename,$insertdata);
             $result=$connect->Execute($query) or safe_die ($clang->gT("Error").": Failed to insert data<br />{$query}<br />\n".$connect->ErrorMsg());
             $results['question_attributes']++;
-        }
+    }
     }
 
 
@@ -889,8 +891,10 @@ function XMLImportQuestion($sFullFilepath, $newsid, $newgid)
             $query=$connect->GetInsertSQL($tablename,$insertdata);
             $result=$connect->Execute($query) or safe_die ($clang->gT("Error").": Failed to insert data<br />\$query<br />\n".$connect->ErrorMsg());
             $results['defaultvalues']++;
-        }
     }
+    }
+
+    LimeExpressionManager::SetDirtyFlag(); // so refreshes syntax highlighting
 
     $results['newqid']=$newqid;
     $results['questions']=1;
